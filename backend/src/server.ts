@@ -18,10 +18,6 @@ app.use(cors({
     credentials: true
 }))
 
-app.get('/',(req,res) => {
-    res.json('hello world');
-})
-
 app.use('/api/auth',authRouter)
 app.use('/api/messages',messageRouter)
 
