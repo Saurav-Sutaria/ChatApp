@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useAuthentication } from "../context/AuthenticationContext";
-import { LogOut, MessageSquare, Settings, User } from "lucide-react";
+import { LogOut, MessageSquare, User } from "lucide-react";
 
 const Navbar = () => {
   const {logout, user} = useAuthentication();
