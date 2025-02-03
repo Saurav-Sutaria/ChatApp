@@ -2,23 +2,23 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
-import SettingsPage from "./pages/SettingsPage";
 import ProfilePage from "./pages/ProfilePage";
 import Navbar from "./components/Navbar";
 import { useAuthentication } from "./context/AuthenticationContext";
 import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
+import Footer from "./components/Footer";
 
 function App() {
-  const { checkAuth, user, onlineUsers} = useAuthentication();
+  const { checkAuth, user, onlineUsers } = useAuthentication();
 
   useEffect(() => {
-    console.log('online users', onlineUsers);
+    console.log("online users", onlineUsers);
     checkAuth();
   }, []);
 
   return (
-    <div>
+    <div className="">
       <Navbar />
       <Routes>
         <Route
@@ -33,13 +33,12 @@ function App() {
           path="/signup"
           element={!user ? <SignupPage /> : <Navigate to="/" />}
         />
-        <Route path="/settings" element={<SettingsPage />} />
         <Route
           path="/profile"
           element={user ? <ProfilePage /> : <Navigate to="/" />}
         />
       </Routes>
-
+      <Footer />
       <Toaster />
     </div>
   );
